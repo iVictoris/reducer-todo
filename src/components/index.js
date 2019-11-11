@@ -28,32 +28,55 @@ const EnchancedTodoForm = withFormik({
   handleSubmit(
     { todo },
     {
-      props: { addTodo },
+      props: { dispatch },
       resetForm
     }
   ) {
-    addTodo(todo);
+    const todoItem = {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      text: todo,
+      completed: false
+    };
+    dispatch({ type: "ADD_TODO", payload: todoItem });
     resetForm({ todo: "" });
   }
 })(TodoForm);
 
+const Todo = ({id, text, completed}) => {
+  return (
+    <div id={id} className={completed ? 'done' : ''}>
+        <p>{text}</p>
+      </div>
+  )
+}
+
 // * TodoList
-const TodoList = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const TodoList = ({state}) => {
   const todos = state.map(item => {
-    return (<div key={item.id}>
-      <p>{item.text}</p>
-    </div>);
+    return (
+      <Todo key={item.id} {...item} />
+    );
   });
 
   return <div className="TodoList">{todos}</div>;
 };
 
+const TodoApp = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      <EnchancedTodoForm dispatch={dispatch} />
+      <TodoList state={state} dispatch={dispatch}/>
+    </>
+  );
+};
+
 function App() {
   return (
     <div className="App">
-      <EnchancedTodoForm />
-      <TodoList />
+      <TodoApp />
     </div>
   );
 }
