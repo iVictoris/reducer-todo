@@ -15,10 +15,10 @@ const reducer = (initialState, action) => {
     case "COMPLETE_TODO":
       todo = initialState.filter(todo => todo.id === action.payload)[0];
       todos = initialState.filter(todo => todo.id !== action.payload);
-      todo.completed = !todo.completed
-      todos = [...todos, todo]
+      todo.completed = !todo.completed;
+      todos = [...todos, todo];
       return todos;
-    case 'ClEAR_TODOS':
+    case "CLEAR_TODOS":
       todos = initialState.filter(todo => !todo.completed);
       return todos;
     default:
