@@ -18,6 +18,9 @@ const reducer = (initialState, action) => {
       todo.completed = !todo.completed
       todos = [...todos, todo]
       return todos;
+    case 'ClEAR_TODOS':
+      todos = initialState.filter(todo => !todo.completed);
+      return todos;
     default:
       return initialState;
   }
