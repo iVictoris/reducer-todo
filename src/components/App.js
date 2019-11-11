@@ -1,10 +1,10 @@
 import React from 'react';
-import {TodoList, TodoForm} from './';
+import {TodoList, EnchancedTodoForm} from './';
 
 function App() {
   return (
     <div className="App">
-      <TodoForm />
+      <EnchancedTodoForm />
       <TodoList />
     </div>
   );

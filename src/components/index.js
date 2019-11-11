@@ -11,7 +11,8 @@ import { initialState, reducer } from "../reducers";
 
 
 // * Todo Form
-const todoForm = () => {
+const TodoForm = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <Form>
       <Field type="text" placeholder="Add Todo" name='todo'/>
@@ -19,7 +20,7 @@ const todoForm = () => {
   );
 };
 
-const TodoForm = withFormik({
+const EnchancedTodoForm = withFormik({
   mapPropsToValues ({todo = ''}) {
     return {todo}
   },
@@ -31,7 +32,7 @@ const TodoForm = withFormik({
     addTodo(todo)
     resetForm({todo: ''});
   }
-})(todoForm)
+})(TodoForm)
 
 // * TodoList
 const TodoList = () => {
@@ -40,4 +41,4 @@ const TodoList = () => {
   return <div className="TodoList"></div>;
 };
 
-export { App, TodoList, TodoForm };
+export { App, TodoList, EnchancedTodoForm };
