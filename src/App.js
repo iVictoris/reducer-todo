@@ -1,11 +1,9 @@
 import React from 'react';
-import {TodoList, EnchancedTodoForm} from './';
-
+import {TodoApp} from './components';
 function App() {
   return (
     <div className="App">
-      <EnchancedTodoForm />
-      <TodoList />
+      <TodoApp />
     </div>
   );
 }
