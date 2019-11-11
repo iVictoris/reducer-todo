@@ -7,16 +7,17 @@ const initialState = [
 ];
 
 const reducer = (initialState, action) => {
-  let todos;
+  let todos, todo;
   switch (action.type) {
     case "ADD_TODO":
       todos = [...initialState, action.payload];
       return todos;
     case "COMPLETE_TODO":
-      const todo = initialState.filter(todo => todo.id === action.payload);
+      todo = initialState.filter(todo => todo.id === action.payload)[0];
       todos = initialState.filter(todo => todo.id !== action.payload);
-      todo.completed = !todo.completed;
-      return [...todos, todo];
+      todo.completed = !todo.completed
+      todos = [...todos, todo]
+      return todos;
     default:
       return initialState;
   }
