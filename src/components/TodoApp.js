@@ -11,8 +11,8 @@ const TodoApp = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <TodoContext.Provider value={{state, dispatch}}>
-      <EnchancedTodoForm dispatch={dispatch} />
-      <TodoList state={state} dispatch={dispatch}/>
+      <EnchancedTodoForm dispatch={dispatch} /> {/* Only thing I couldn't figure out was the use of Context API inside formik*/}
+      <TodoList/>
     </TodoContext.Provider>
   );
 };
