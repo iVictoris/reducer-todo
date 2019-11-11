@@ -1,3 +1,5 @@
 import {createContext} from 'react';
 
-export const TodoContext = createContext();
+import {initialState} from '../reducers';
+
+export const TodoContext = createContext(initialState);
