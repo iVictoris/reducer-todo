@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Form, Field, withFormik } from "formik";
-import * as Yup from 'yup';
+import * as Yup from "yup";
+
+import { TodoContext } from "../contexts";
 
 // * Todo Form
 const TodoForm = () => {
+  const { dispatch } = useContext(TodoContext);
   return (
     <Form>
       <Field type="text" placeholder="Add Todo" name="todo" />
+      <button type="submit">Add</button>
+      <button type="button" onClick={() => dispatch({ type: "CLEAR_TODOS" })}>
+        Clear completed
+      </button>
     </Form>
   );
 };
