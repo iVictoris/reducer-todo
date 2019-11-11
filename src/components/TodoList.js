@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Todo from './Todo';
+import {TodoContext} from '../contexts';
 // * TodoList
-const TodoList = ({state, dispatch}) => {
+const TodoList = () => {
+  const {state} = useContext(TodoContext);
   const todos = state.map(item => {
     return (
       <Todo key={item.id} {...item} />
